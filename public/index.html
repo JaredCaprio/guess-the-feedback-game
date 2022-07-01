@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <script src="main.js" defer></script>
+
+    <title>Guess The Feedback</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="game-rules">
+        <div data-game-rules-link class="rules-link">Rules</div>
+        <dialog data-game-rules-dialog class="result-dialog game-rules-dialog">
+          <h3>How to play</h3>
+          <ol>
+            <li>Listen to a short clip of the beginning of a song</li>
+            <li>Make your selection within 60 seconds</li>
+            <li>
+              If your guess is correct you will be awarded points (see scoring
+              below)
+            </li>
+            <li>
+              You start with 4 💚, if you run out of lives the game will end
+            </li>
+          </ol>
+          <p>Scoring</p>
+          <ul>
+            <li>Round 1 to 5 - 10 points</li>
+            <li>Round 6 to 10 - 25 points</li>
+            <li>Round 11 and up - 50 points</li>
+          </ul>
+          <button data-rules-close-btn class="game-rules-modal-close-btn">
+            X
+          </button>
+        </dialog>
+      </div>
+      <h2 class="game-header">Guess the Feedback</h2>
+      <div data-display-container class="display-container">
+        <div class="lives-container">
+          <i data-live-heart class="fa-solid fa-heart"></i
+          ><i data-live-heart class="fa-solid fa-heart"></i
+          ><i data-live-heart class="fa-solid fa-heart"></i
+          ><i data-live-heart class="fa-solid fa-heart"></i>
+        </div>
+
+        <div class="round-info">
+          <h1>Round <span data-round-numb>1</span></h1>
+          <h5 data-start-song class="hide-icon click-to-start">
+            Click play to start song
+          </h5>
+          <button data-start-btn class="start-btn">Click to Start Game</button>
+        </div>
+
+        <i
+          data-play-btn
+          class="hide-icon fa-regular fa-circle-play fa-5x"
+          style="color: white; font-size: 100px"
+        ></i>
+        <i
+          data-pause-btn
+          class="hide-icon fa-regular fa-circle-pause fa-5x"
+          style="font-size: 80px; color: white"
+        ></i>
+        <i
+          data-record-icon
+          class="fa-solid fa-compact-disc fa-10x"
+          style="font-size: 450px"
+        ></i>
+        <h3 data-timer-header class="timer-header"></h3>
+        <h3 data-timer class="timer"></h3>
+        <input
+          data-vol-control
+          class="volume-control"
+          type="range"
+          min="0"
+          max="10"
+        />
+      </div>
+      <div data-options-container class="hide-icon options-container">
+        <button data-option-btn></button>
+        <button data-option-btn></button>
+        <button data-option-btn></button>
+        <button data-option-btn></button>
+      </div>
+      <audio data-audio-el class="snippet-song" src=""></audio>
+      <dialog data-result-dialog class="result-dialog">
+        <h2 data-option-result>Correct!</h2>
+        <p data-song-title>Title: The Dull Blade</p>
+        <p data-song-artist>Artist: ASG</p>
+        <p data-song-year>Year: 2013</p>
+        <img data-album-cover src="Img\asg-cover.jpeg" alt="" /> <br />
+        <audio data-full-song class="full-song" src="" controls></audio>
+        <button data-next-round>Next Round!</button>
+      </dialog>
+      <dialog data-end-game-dialog class="end-game-dialog result-dialog">
+        <h2>Game Over!</h2>
+        <p>Your total Score: <span data-user-total-score></span></p>
+        <label for="name-input">Enter Initials</label>
+        <br />
+        <input
+          data-name-input
+          type="text"
+          name="name-input"
+          id="name-input"
+          maxlength="3"
+        />
+        <br />
+        <button data-save-score>Save Score</button>
+        <button data-play-again>Play Again!</button>
+        <p data-saved-indicate class="hide-icon" style="color: green">Saved!</p>
+      </dialog>
+    </div>
+
+    <div class="high-scores">
+      <h2>Global High Scores</h2>
+      <ol data-high-score-ol>
+        <p>Name&nbsp; Score</p>
+      </ol>
+    </div>
+
+    <div class="copyright">
+      <p>designed by<a href="#"> Jared Caprio</a></p>
+    </div>
+  </body>
+</html>
