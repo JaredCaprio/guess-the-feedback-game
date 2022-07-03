@@ -432,7 +432,7 @@ function addScore(currVal) {
     userScore > 0 &&
     currVal >= 3
   ) {
-    fetch("/addScore", {
+    fetch("https://guess-the-feedback.heroku.com/addScore", {
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
