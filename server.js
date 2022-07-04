@@ -4,12 +4,11 @@ const dotenv = require("dotenv").config();
 const path = require("path");
 const cors = require("cors");
 const ejs = require("ejs");
-const serveStatic = require("serve-static");
 const MongoClient = require("mongodb").MongoClient;
 const connectionString = process.env.MONGODB_URI;
 app.use(cors());
-/* app.use("/public", express.static("public")); */
-app.use(serveStatic(__dirname + "/public"));
+app.use("/public", express.static("public"));
+
 app.set("view engine", "ejs");
 app.use(express.json({ limit: "1mb" }));
 
