@@ -39,7 +39,7 @@ MongoClient.connect(connectionString)
         .limit(30)
         .toArray()
         .then((data) => {
-          response.render("index", { info: data });
+          response.render("index.ejs", { info: data });
         })
         .catch((error) => console.error(error));
     });
@@ -47,6 +47,7 @@ MongoClient.connect(connectionString)
   .catch((error) => console.error(error));
 
 app.use("/public", express.static("public"));
+
 app.listen(process.env.PORT || 8000, () => {
   console.log(
     `The sever is running on port ${process.env.PORT}, you better go catch it!`
