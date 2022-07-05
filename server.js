@@ -4,6 +4,7 @@ const dotenv = require("dotenv").config();
 const path = require("path");
 const cors = require("cors");
 const ejs = require("ejs");
+const { response } = require("express");
 const MongoClient = require("mongodb").MongoClient;
 const connectionString = process.env.MONGODB_URI;
 app.use(cors());
@@ -16,6 +17,17 @@ MongoClient.connect(connectionString)
     console.log("connected to database");
     const db = client.db("feedback-game");
     const infoCollection = db.collection("highscores");
+    app.get("/", (request, response) => {
+      infoCollection
+        .find()
+        .sort({ score: -1 })
+        .limit(30)
+        .toArray()
+        .then((data) => {
+          response.render("index", { info: data });
+        })
+        .catch((error) => console.error(error));
+    });
 
     app.post("/addScore", (request, response) => {
       let parsedInt = parseInt(request.body.score);
@@ -30,18 +42,6 @@ MongoClient.connect(connectionString)
         });
 
       console.log(request.body);
-    });
-
-    app.get("/", (request, response) => {
-      infoCollection
-        .find()
-        .sort({ score: -1 })
-        .limit(30)
-        .toArray()
-        .then((data) => {
-          response.render("index.ejs", { info: data });
-        })
-        .catch((error) => console.error(error));
     });
   })
   .catch((error) => console.error(error));
