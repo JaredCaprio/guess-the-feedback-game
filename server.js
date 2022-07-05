@@ -7,7 +7,6 @@ const ejs = require("ejs");
 const MongoClient = require("mongodb").MongoClient;
 const connectionString = process.env.MONGODB_URI;
 app.use(cors());
-app.use("/public", express.static("public"));
 
 app.set("view engine", "ejs");
 app.use(express.json({ limit: "1mb" }));
@@ -47,6 +46,7 @@ MongoClient.connect(connectionString)
   })
   .catch((error) => console.error(error));
 
+app.use("/public", express.static("public"));
 app.listen(process.env.PORT || 8000, () => {
   console.log(
     `The sever is running on port ${process.env.PORT}, you better go catch it!`
