@@ -4,7 +4,7 @@ const dotenv = require("dotenv").config();
 const path = require("path");
 const cors = require("cors");
 const ejs = require("ejs");
-const { response } = require("express");
+
 const MongoClient = require("mongodb").MongoClient;
 const connectionString = process.env.MONGODB_URI;
 app.use(cors());
