@@ -320,7 +320,7 @@ input {
 }
 
 .high-score-scroll {
-  animation: score_scroll 25s ease-in -1s infinite forwards;
+  animation: score_scroll 25s ease-in -5s infinite forwards;
 }
 
 .high-scores ul li {
@@ -529,7 +529,7 @@ input {
 
 @keyframes score_scroll {
   from {
-    transform: translateY(76%);
+    transform: translateY(100%);
   }
   to {
     transform: translateY(-100%);
